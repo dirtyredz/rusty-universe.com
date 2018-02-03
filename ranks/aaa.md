@@ -5,6 +5,6 @@ description: fsdfd
 amount: '5'
 rankRewards:
   - amount: '1'
-    reward: ww
+    reward: Testing
 ---
 

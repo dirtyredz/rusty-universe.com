@@ -10,27 +10,25 @@ collections:
     folder: rewards
     create: true
     fields:
-      - { name: title, label: Title }
-      - { name: name, label: Name }
-      - { name: description, label: Description }
+      - { name: title, label: Title, widget: "string"}
+      - { name: description, label: Description, widget: "string"}
       - { name: icon, label: Icon, widget: "select", options: ["Radar", "Mining", "BackForth", "Aerosol", "Discord", "Computer", "Coins"] }
   - name: ranks
     label: Ranks
     folder: ranks
     create: true
     fields:
-      - { name: title, label: Title }
-      - { name: name, label: Name }
-      - { name: description, label: Description }
-      - { name: amount, label: "Currency Amount" }
+      - { name: title, label: Title, widget: "string"}
+      - { name: description, label: Description, widget: "string"}
+      - { name: amount, label: "Currency Amount", widget: "number"}
       - name: rankRewards
         label: Rank Rewards
         widget: list
         fields:
-            - { name: amount, label: Amount }
-            - label: Reward
-              name: reward
-              widget: relation
-              collection: rewards
-              searchFields: ["name"]
-              valueField: "name"
+            - { name: amount, label: Amount, widget: "number"}
+            - label: "Reward"
+              name: "reward"
+              widget: "relation"
+              collection: "rewards"
+              searchFields: ["description", "title"]
+              valueField: "title"

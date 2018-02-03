@@ -185,15 +185,17 @@ const Donate =({ data, transition }) =>(
 
 export const pageQuery = graphql`
   query DonateQuery {
-    allMarkdownRemark(limit: 1000) {
-      edges {
-        node {
-          frontmatter {
-            name
+      allMarkdownRemark(
+          filter: { fileAbsolutePath: { regex: "/rewards/"}}
+        ) {
+        edges {
+          node {
+            frontmatter{
+             title
+           }
           }
         }
       }
-    }
   }
 `;
 export default Donate

@@ -1,6 +1,6 @@
 ---
 title: Test
-name: Testing
+namex: Testing
 description: Testing Again
 icon: Radar
 ---

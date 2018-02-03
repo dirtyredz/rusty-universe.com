@@ -32,5 +32,5 @@ collections:
               name: reward
               widget: relation
               collection: rewards
-              searchFields: "name"
+              searchFields: ["name"]
               valueField: "name"

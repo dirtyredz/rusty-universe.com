@@ -9,8 +9,7 @@ import './index.css'
 
 const TemplateWrapper = ({ children }) => (
   <div style={{height: '100%'}}>
-    <AwesomeBackground/>
-    <ScrollUpButton/>
+
     <Helmet
       title="sigh"
       meta={[
@@ -18,9 +17,7 @@ const TemplateWrapper = ({ children }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Header />
     {children()}
-    <Footer />
   </div>
 )
 

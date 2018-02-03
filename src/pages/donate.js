@@ -134,7 +134,7 @@ const RanksData = {
         Rewards: [{Name: "ExtraBuoyCores", Amount: 8}, {Name: "RegnerativeSector", Amount: 4}, {Name: "WebInterface", Amount: 1}, {Name: "ExtraStart", Amount: 1}, {Name: "Colors", Amount: 100}, {Name: "DistCore", Amount: 1}, {Name: "Discord", Amount: 1}]}
 }
 
-const Donate =({ transition}) =>(
+const Donate =({ data, transition }) =>(
     <Wrapper style={transition && transition.style}>
         <FlexWrapper>
             {Object.keys(RanksData).map((RankName)=>{
@@ -183,4 +183,17 @@ const Donate =({ transition}) =>(
     </Wrapper>
 )
 
+export const pageQuery = graphql`
+  query DonateQuery {
+    allMarkdownRemark(limit: 1000) {
+      edges {
+        node {
+          frontmatter {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
 export default Donate

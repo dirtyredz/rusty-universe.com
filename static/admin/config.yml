@@ -1,0 +1,33 @@
+backend:
+  name: test-repo
+
+media_folder: static/assets
+
+collections:
+  - name: rewards
+    label: Rewards
+    folder: rewards
+    create: true
+    fields:
+      - { name: name, label: Name }
+      - { name: description, label: Description }
+      - { name: icon, label: Icon, widget: "select", options: ["Radar", "Mining", "BackForth", "Aerosol", "Discord", "Computer", "Coins"] }
+  - name: ranks
+    label: Ranks
+    folder: ranks
+    create: true
+    fields:
+      - { name: name, label: Name }
+      - { name: description, label: Description }
+      - { name: amount, label: "Currency Amount" }
+      - name: rankRewards
+        label: Rank Rewards
+        widget: list
+        fields:
+            - { name: amount, label: Amount }
+            - label: Reward
+              name: reward
+              widget: relation
+              collection: rewards
+              searchFields: "name"
+              valueField: "name"

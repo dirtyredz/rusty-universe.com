@@ -1,5 +1,6 @@
 backend:
-  name: test-repo
+  name: github
+  repo: dirtyredz/rusty-universe.com
 
 media_folder: static/assets
 

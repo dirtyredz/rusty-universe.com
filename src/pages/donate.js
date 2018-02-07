@@ -136,6 +136,7 @@ const RanksData = {
 
 const Donate =({ data, transition }) =>(
     <Wrapper style={transition && transition.style}>
+        {console.log(data)}
         <FlexWrapper>
             {Object.keys(RanksData).map((RankName)=>{
                 let Rank = RanksData[RankName]
@@ -192,6 +193,8 @@ export const pageQuery = graphql`
           node {
             frontmatter{
              title
+             description
+             icon
            }
           }
         }

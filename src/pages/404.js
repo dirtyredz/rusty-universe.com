@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import styled, { injectGlobal } from 'styled-components';
 import { Link } from 'react-router-dom';
 import TallLean from '../components/resources/Tall & Lean.ttf'
-
+import Helmet from 'react-helmet'
 
 injectGlobal`
   @font-face {
@@ -55,6 +55,13 @@ const Wrapper = styled.div`
 
 const NotFound = ({ transition }) => (
     <Wrapper style={transition && transition.style}>
+        <Helmet
+          title="Rusty-404"
+          meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+          ]}
+        />
         <NotFoundWrapper>
           <NotFoundContent>
             <h1>404</h1>

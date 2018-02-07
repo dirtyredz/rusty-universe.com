@@ -5,6 +5,7 @@ import styled, { injectGlobal } from 'styled-components'
 import Borg from '../components/resources/Borg.ttf'
 import Elixia from '../components/resources/ELIXIA.ttf'
 import EuroStyle from '../components/resources/EUROS3.ttf'
+import Helmet from 'react-helmet'
 
 injectGlobal`
   @font-face {
@@ -115,6 +116,13 @@ const Rewards = styled.div`
 
 const Donate = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
+        <Helmet
+          title="Rusty-Donation"
+          meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+          ]}
+        />
         <FlexWrapper>
             {data.rank.edges.sort((a,b)=>{
                 return a.node.frontmatter.amount-b.node.frontmatter.amount

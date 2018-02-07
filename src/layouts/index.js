@@ -12,7 +12,7 @@ const TemplateWrapper = ({ children }) => (
     <AwesomeBackground/>
     <ScrollUpButton/>
     <Helmet
-      title="sigh"
+      title="Rusty-Universe"
       meta={[
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },

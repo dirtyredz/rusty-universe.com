@@ -137,7 +137,9 @@ const RanksData = {
 const Donate = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
         <FlexWrapper>
-            {data.rank.edges.map((edge)=>{
+            {data.rank.edges.sort((a,b)=>{
+                return a.node.frontmatter.amount-b.node.frontmatter.amount
+            }).map((edge)=>{
                 let Rank = edge.node.frontmatter
                 return(
                     <FlexItem key={Rank.title.toString()}>

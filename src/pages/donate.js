@@ -176,7 +176,7 @@ const Donate = ({ data, transition }) => (
                         {data.rank.edges.map((edge)=>{
                             let Rank = edge.node.frontmatter
                             return(
-                                <TheButton key={"OneTimeDonation_"+RankName.toString()}>Donate Once for <br/>{Rank.amount}$</TheButton>
+                                <TheButton key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for <br/>{Rank.amount}$</TheButton>
                             )
                         })}
                     </Rewards>

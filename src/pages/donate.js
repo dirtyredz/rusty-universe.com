@@ -134,7 +134,7 @@ const RanksData = {
         Rewards: [{Name: "ExtraBuoyCores", Amount: 8}, {Name: "RegnerativeSector", Amount: 4}, {Name: "WebInterface", Amount: 1}, {Name: "ExtraStart", Amount: 1}, {Name: "Colors", Amount: 100}, {Name: "DistCore", Amount: 1}, {Name: "Discord", Amount: 1}]}
 }
 
-const Donate =({ data, transition }) =>(
+const Donate = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
         {console.log(data)}
         <FlexWrapper>
@@ -186,18 +186,31 @@ const Donate =({ data, transition }) =>(
 
 export const pageQuery = graphql`
   query DonateQuery {
-      allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/rewards/"}}
-        ) {
-        edges {
-          node {
-            frontmatter{
-             title
-             description
-             icon
-           }
+      rewards: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/rewards/"}}) {
+          edges {
+            node {
+              frontmatter{
+               title
+               description
+               icon
+             }
+            }
           }
-        }
+      },
+      rank: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/rank/"}}) {
+          edges {
+            node {
+              frontmatter{
+               title
+               description
+               amount
+               rankRewards{
+                 amount
+                 reward
+               }
+             }
+            }
+          }
       }
   }
 `;

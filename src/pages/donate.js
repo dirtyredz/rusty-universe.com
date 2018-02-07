@@ -142,16 +142,15 @@ const Donate = ({ data, transition }) => (
                 return(
                     <FlexItem key={Rank.title.toString()}>
                         <DonationWrapper>
-                            <header>{Rank.title}</header>
+                            <header>{Rank.title.toUpperCase()}</header>
                             <section>{Rank.description}</section>
                             <Rewards  key={Rank.title.toString() + "_Rewards"}>
                                 <header>REWARDS</header>
                                 <br/>
                                 {Rank.rankRewards.map((r) => {
                                     let Reward = data.rewards.edges.reduce((a,b)=>{
-                                        return b.node.frontmatter.title === r.reward ? b.node.frontmatter : a
+                                        return b.node.frontmatter.title.toLowerCase() === r.reward.toLowerCase() ? b.node.frontmatter : a
                                     },false)
-                                    console.log(Reward)
                                     if ( Reward )
                                         return(
                                             <div key={Rank.title.toString() + "_" + Reward.title.toString()}>
@@ -174,10 +173,10 @@ const Donate = ({ data, transition }) => (
                         You will receive all rewards for the rank at which you pay for. The rewards will be active for one month.
                     </section>
                     <Rewards>
-                        {Object.keys(RanksData).map((RankName)=>{
-                            let Rank = RanksData[RankName]
+                        {data.rank.edges.map((edge)=>{
+                            let Rank = edge.node.frontmatter
                             return(
-                                <TheButton key={"OneTimeDonation_"+RankName.toString()}>Donate Once for <br/>{Rank.Amount}$</TheButton>
+                                <TheButton key={"OneTimeDonation_"+RankName.toString()}>Donate Once for <br/>{Rank.amount}$</TheButton>
                             )
                         })}
                     </Rewards>

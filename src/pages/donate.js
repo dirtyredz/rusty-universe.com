@@ -136,29 +136,32 @@ const RanksData = {
 
 const Donate = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
-        {console.log(data)}
         <FlexWrapper>
-            {Object.keys(RanksData).map((RankName)=>{
-                let Rank = RanksData[RankName]
+            {data.rank.edges.map((edge)=>{
+                let Rank = edge.node.frontmatter
                 return(
-                    <FlexItem key={RankName.toString()}>
+                    <FlexItem key={Rank.title.toString()}>
                         <DonationWrapper>
-                            <header>{RankName}</header>
-                            <section>{Rank.Description}</section>
-                            <Rewards  key={RankName.toString() + "_Rewards"}>
+                            <header>{Rank.title}</header>
+                            <section>{Rank.description}</section>
+                            <Rewards  key={Rank.title.toString() + "_Rewards"}>
                                 <header>REWARDS</header>
                                 <br/>
-                                {Rank.Rewards.map((r) => {
-                                    let Reward = RewardData[r.Name]
-                                    return(
-                                        <div key={RankName.toString() + "_" + r.Name.toString()}>
-                                            <RewardIcons name={Reward.Icon}/>
-                                            <span>{Reward.Description.replace("^S",r.Amount)}</span>
-                                        </div>
-                                    )
+                                {Rank.rankRewards.map((r) => {
+                                    let Reward = data.rewards.edges.reduce((a,b)=>{
+                                        return b.node.frontmatter.title === r.reward ? b.node.frontmatter : a
+                                    },false)
+                                    console.log(Reward)
+                                    if ( Reward )
+                                        return(
+                                            <div key={Rank.title.toString() + "_" + Reward.title.toString()}>
+                                                <RewardIcons name={Reward.icon}/>
+                                                <span>{Reward.description.replace("^S",r.amount)}</span>
+                                            </div>
+                                        )
                                 })}
                             </Rewards>
-                            <TheButton>Subcribe for {Rank.Amount}$</TheButton>
+                            <TheButton>Subcribe for {Rank.amount}$</TheButton>
                         </DonationWrapper>
                     </FlexItem>
                 )

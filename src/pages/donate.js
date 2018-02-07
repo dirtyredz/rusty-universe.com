@@ -113,27 +113,6 @@ const Rewards = styled.div`
     }
 `;
 
-const RewardData = {
-    ExtraBuoyCores: {Description: "^S extra Buoy Cores/Points", Icon: "Radar"},
-    RegnerativeSector: {Description: "Request ^S sector of your choice to be turned into a Regenerative Asteroid Field", Icon: "Mining"},
-    WebInterface: {Description: "A Web Interface login giving more information and functionality", Icon: "Computer"},
-    ExtraStart: {Description: "Extra startup resource/credits when you start", Icon: "Coins"},
-    Colors: {Description: "Given ^S% of all the colors, randomly", Icon: "Aerosol"},
-    DistCore: {Description: "Access to the Dist To Core UI", Icon: "BackForth"},
-    Discord: {Description: "Get your own discord channel", Icon: "Discord"}
-}
-
-const RanksData = {
-    Supporter: {Amount: 5, Description: "Our lowest rank, we appreciate every bit you can give.",
-        Rewards: [{Name: "ExtraBuoyCores", Amount: 2}, {Name: "RegnerativeSector", Amount: 1}, {Name: "WebInterface", Amount: 1}, {Name: "ExtraStart", Amount: 1}, {Name: "Colors", Amount: 25}, {Name: "DistCore", Amount: 1}]},
-    Contributer: {Amount: 10, Description: "With this rank you will truly be a contributor to the community, keeping the servers alive and running.",
-        Rewards: [{Name: "ExtraBuoyCores", Amount: 4}, {Name: "RegnerativeSector", Amount: 2}, {Name: "WebInterface", Amount: 1}, {Name: "ExtraStart", Amount: 1}, {Name: "Colors", Amount: 50}, {Name: "DistCore", Amount: 1}]},
-    VIP: {Amount: 25, Description: "Not that everybody else isn’t important, your support however is! With your contribution, you will allow the community to keep growing.",
-        Rewards: [{Name: "ExtraBuoyCores", Amount: 6}, {Name: "RegnerativeSector", Amount: 3}, {Name: "WebInterface", Amount: 1}, {Name: "ExtraStart", Amount: 1}, {Name: "Colors", Amount: 75}, {Name: "DistCore", Amount: 1}, {Name: "Discord", Amount: 1}]},
-    Investor: {Amount: 50, Description: "Contributing at this level allows us to maintain optimal performance and connection to the server(s). You will, of course, have access to all the other perks, heck, if you are supporting on this level you could even have your private TeamSpeak or small game server hosted by us!",
-        Rewards: [{Name: "ExtraBuoyCores", Amount: 8}, {Name: "RegnerativeSector", Amount: 4}, {Name: "WebInterface", Amount: 1}, {Name: "ExtraStart", Amount: 1}, {Name: "Colors", Amount: 100}, {Name: "DistCore", Amount: 1}, {Name: "Discord", Amount: 1}]}
-}
-
 const Donate = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
         <FlexWrapper>

@@ -15,5 +15,7 @@ rankRewards:
     reward: ExtraStart
   - amount: '1'
     reward: DistCore
+  - amount: '1'
+    reward: Discord
 ---
 

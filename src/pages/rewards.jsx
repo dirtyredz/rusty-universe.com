@@ -71,7 +71,7 @@ const DonationWrapper = styled.div`
         width: 75%
     }
 `;
-const Rewards = styled.div`
+const RewardsContainer = styled.div`
     display: flex;
     flex-flow: row wrap;
     padding: 50px;
@@ -114,10 +114,10 @@ const Rewards = styled.div`
     }
 `;
 
-const Donate = ({ data, transition }) => (
+const Rewards = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
         <Helmet
-          title="Rusty-Donation"
+          title="Rusty-Rewards"
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
@@ -133,7 +133,7 @@ const Donate = ({ data, transition }) => (
                         <DonationWrapper>
                             <header>{Rank.title.toUpperCase()}</header>
                             <section>{Rank.description}</section>
-                            <Rewards  key={Rank.title.toString() + "_Rewards"}>
+                            <RewardsContainer  key={Rank.title.toString() + "_Rewards"}>
                                 <header>REWARDS</header>
                                 <br/>
                                 {Rank.rankRewards.map((r) => {
@@ -148,8 +148,8 @@ const Donate = ({ data, transition }) => (
                                             </div>
                                         )
                                 })}
-                            </Rewards>
-                            <TheButton>Subcribe for {Rank.amount}$</TheButton>
+                            </RewardsContainer>
+                            <TheButton to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}}>Subcribe for {Rank.amount}$</TheButton>
                         </DonationWrapper>
                     </FlexItem>
                 )
@@ -161,14 +161,14 @@ const Donate = ({ data, transition }) => (
                         Dont feel like subscribing? Dont worry we also offer one time donations of your choice.
                         You will receive all rewards for the rank at which you pay for. The rewards will be active for one month.
                     </section>
-                    <Rewards>
+                    <RewardsContainer>
                         {data.rank.edges.map((edge)=>{
                             let Rank = edge.node.frontmatter
                             return(
-                                <TheButton key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for <br/>{Rank.amount}$</TheButton>
+                                <TheButton to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}} key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for <br/>{Rank.amount}$</TheButton>
                             )
                         })}
-                    </Rewards>
+                    </RewardsContainer>
                 </DonationWrapper>
             </FlexItem>
         </FlexWrapper>
@@ -205,4 +205,4 @@ export const pageQuery = graphql`
       }
   }
 `;
-export default Donate
+export default Rewards

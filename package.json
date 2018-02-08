@@ -13,6 +13,7 @@
     "gatsby-source-filesystem": "^1.5.16",
     "gatsby-transformer-remark": "^1.7.30",
     "gsap": "^1.20.3",
+    "paypal-checkout": "^4.0.173",
     "prop-types": "^15.6.0",
     "react-helmet": "^5.2.0",
     "react-scroll-up-button": "^1.5.10",

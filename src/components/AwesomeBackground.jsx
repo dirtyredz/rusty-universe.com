@@ -120,7 +120,7 @@ export default class AwesomeBackground extends React.Component {
             }else{
                 scale = 1
             }
-            TweenLite.to(TheBG, 100, {roation: 0.01,scale: scale,onComplete:breath, onCompleteParams:[scale],ease:Linear.ease});
+            TweenLite.to(TheBG, 80, {roation: 0.01,scale: scale,onComplete:breath, onCompleteParams:[scale],ease:Linear.ease});
         }
         setTimeout(start, 500);
         setTimeout(()=>{

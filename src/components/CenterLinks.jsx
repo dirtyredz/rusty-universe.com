@@ -126,7 +126,7 @@ export default class CenterLinks extends React.Component {
                     <Item style={(this.state.Loaded1) ? {} : {opacity: 0}} ref={(a) => { this.One = a; }}>
                         <Link
                             onClick={this.Animate.bind(this,this.Two,this.Three)}
-                            to="/Donate">
+                            to="/Rewards">
                             <span>DONATE</span>
                         </Link>
                     </Item>

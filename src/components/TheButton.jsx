@@ -1,7 +1,8 @@
 import React from "react";
+import Link from 'gatsby-link';
 import styled from 'styled-components';
 
-const Button = styled.button`
+const Button = styled(Link)`
     background-color: #9bafe6;
     border: none;
     color: black;
@@ -24,7 +25,7 @@ const ButtonConteiner = styled.div`
 export default (props) => {
     return (
         <ButtonConteiner>
-            <Button>
+            <Button {...props}>
                 {props.children}
             </Button>
         </ButtonConteiner>

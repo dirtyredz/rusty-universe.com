@@ -1,7 +1,7 @@
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === "build-html") {
     config.loader("null", {
-      test: /bad-module/,
+      test: /PaypalForm/,
       loader: "null-loader",
     });
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TheButton from '../components/TheButton'
+import PaymentButton from '../components/PaymentButton'
 import RewardIcons from '../components/RewardIcons'
 import styled, { injectGlobal } from 'styled-components'
 import Borg from '../components/resources/Borg.ttf'
@@ -113,7 +113,19 @@ const RewardsContainer = styled.div`
         }
     }
 `;
-
+const ButtonContainer = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    padding: 50px;
+    & > div{
+        padding-left: 10px;
+        padding-right: 10px;
+        flex: 1 0px;
+    }
+`;
+const CallPaypal = (e,data) => {
+    console.log(e,data)
+}
 const Rewards = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
         <Helmet
@@ -149,7 +161,7 @@ const Rewards = ({ data, transition }) => (
                                         )
                                 })}
                             </RewardsContainer>
-                            <TheButton to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}}>Subcribe for {Rank.amount}$</TheButton>
+                            <PaymentButton rank={Rank} subscribe={true} to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}}>Subcribe for {Rank.amount}$</PaymentButton>
                         </DonationWrapper>
                     </FlexItem>
                 )
@@ -161,14 +173,14 @@ const Rewards = ({ data, transition }) => (
                         Dont feel like subscribing? Dont worry we also offer one time donations of your choice.
                         You will receive all rewards for the rank at which you pay for. The rewards will be active for one month.
                     </section>
-                    <RewardsContainer>
+                    <ButtonContainer>
                         {data.rank.edges.map((edge)=>{
                             let Rank = edge.node.frontmatter
                             return(
-                                <TheButton to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}} key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for <br/>{Rank.amount}$</TheButton>
+                                <PaymentButton rank={Rank} subscribe={false} to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}} key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for {Rank.amount}$</PaymentButton>
                             )
                         })}
-                    </RewardsContainer>
+                    </ButtonContainer>
                 </DonationWrapper>
             </FlexItem>
         </FlexWrapper>

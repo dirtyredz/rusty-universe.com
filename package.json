@@ -5,20 +5,20 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "detect-passive-events": "^1.0.4",
-    "gatsby": "^1.9.178",
-    "gatsby-link": "^1.6.34",
-    "gatsby-plugin-netlify-cms": "^1.0.5",
-    "gatsby-plugin-react-helmet": "^2.0.3",
-    "gatsby-plugin-styled-components": "^2.0.5",
-    "gatsby-source-filesystem": "^1.5.16",
-    "gatsby-transformer-remark": "^1.7.30",
+    "gatsby": "^1.9.194",
+    "gatsby-link": "^1.6.37",
+    "gatsby-plugin-netlify-cms": "^1.0.7",
+    "gatsby-plugin-react-helmet": "^2.0.5",
+    "gatsby-plugin-styled-components": "^2.0.6",
+    "gatsby-source-filesystem": "^1.5.19",
+    "gatsby-transformer-remark": "^1.7.32",
     "gsap": "^1.20.3",
     "paypal-checkout": "^4.0.173",
     "prop-types": "^15.6.0",
     "react-helmet": "^5.2.0",
-    "react-scroll-up-button": "^1.5.10",
+    "react-scroll-up-button": "^1.5.11",
     "react-transition-group": "^2.2.1",
-    "styled-components": "^3.1.5"
+    "styled-components": "^3.1.6"
   },
   "keywords": [
     "gatsby"

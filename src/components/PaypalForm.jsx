@@ -72,7 +72,7 @@ class PaypalForm extends React.Component{
         }else{
             this.state={Message: props.rank.amount + ' One Time Donation'}
         }
-        console.log(this.state.Message)
+        this.ClientID = "AcWJhM_GK9zqjwpnWKtRSXbHV1eRdFyNmlq-4FAQMZDLmZYPyI9d-ViWRst236DrbWlaSaS7wWeMP5RM"
     }
     componentDidMount(){
         this.keyup = document.addEventListener("keyup", (event)=>{
@@ -82,7 +82,6 @@ class PaypalForm extends React.Component{
     }
     componentWillUnmount(){
         document.removeEventListener("keyup",this.keyup)
-        console.log('Unmounted')
     }
     payment(data, actions){
         // Make a call to the REST api to create the payment
@@ -100,19 +99,21 @@ class PaypalForm extends React.Component{
                 body: JSON.stringify({
                     Description: "InGameName: " + this.InGameName.value + ", DiscordName: " + this.DiscordName.value,
                     Amount: this.props.rank.amount,
-                    Rank: this.props.rank.title
-
+                    Rank: this.props.rank.title,
+                    ClientID: this.ClientID
                 })
-            }).then((response) => {
-                console.log('Response1',response)
-                return response.json()
-            }).then((responseObject) => {
-        		console.log('Response2',responseObject);
-                resolve(responseObject.Token);
-        	}).catch((err) => {
+            })
+            .then((response) => {return response.json()})
+            .then((responseObject) => {
+                if (this.props.subscribe){
+                    resolve(responseObject.Token);
+                }else{
+                    resolve(responseObject.paymentID);
+                }})
+            .catch((err) => {
                 reject(err)
         		console.log("Fetch error: " + err);
-        	});
+            });
         })
     };
 
@@ -120,24 +121,26 @@ class PaypalForm extends React.Component{
         console.log("onAuth",data, actions,data.paymentID,data.payerID)
 
         let PaypalApiUrl = 'http://api.dirtyredz.com/paypal/payment/ExecutePayment'
-        if (this.props.subscribe)
+        let body = {
+            PaymentID: data.paymentID,
+            PayerID: data.payerID,
+            ClientID: this.ClientID
+        }
+        if (this.props.subscribe){
             PaypalApiUrl = 'http://api.dirtyredz.com/paypal/billing/ExecuteAgreement'
+            body = {
+                Token: data.paymentToken,
+                ClientID: this.ClientID
+            }
+        }
 
         fetch(PaypalApiUrl,{
             method: 'POST',
             headers: {'content-type': 'application/x-www-form-urlencoded'},
-            body: JSON.stringify({
-                //PaymentID: data.paymentID,
-                //PayerID: data.payerID
-                Token: data.paymentToken
-            })
-        }).then((response)=>{
-            console.log(response)
-            return response.json()
-        }).then((value)=>{
-            console.log(value)
-            this.ShowMessage(null,'Your Donation was succesfull, Thank You!')
+            body: JSON.stringify(body)
         })
+        .then((response)=>{return response.json()})
+        .then((value)=>{this.ShowMessage(null,'Your Donation was succesfull, Thank You!')})
     };
 
     onCancel(data) {
@@ -152,6 +155,7 @@ class PaypalForm extends React.Component{
                 let v = ReactDOM.findDOMNode(this.Wrapper)
                 if(v)
                     v.style.opacity = 0;
+
                 setTimeout(()=>{
                     this.props.TogglePaypal()
                 },1000)
@@ -161,12 +165,6 @@ class PaypalForm extends React.Component{
         }
     }
     render(){
-        //const Options = this.props.data.rank.edges.map((a)=>{
-        //    if (a.node.frontmatter.title === this.props.rank)
-        //        return <option selected value={a.node.frontmatter.title}>{a.node.frontmatter.title} : €{a.node.frontmatter.amount},00 EUR – monthly</option>
-        //    return <option value={a.node.frontmatter.title}>{a.node.frontmatter.title} : €{a.node.frontmatter.amount},00 EUR – monthly</option>
-        //})
-
         let PayPalButton = paypal.Button.driver('react', { React, ReactDOM });
         return(
             <Wrapper ref={a=>this.Wrapper = a}>
@@ -186,7 +184,6 @@ class PaypalForm extends React.Component{
                             shape: 'rect',     // pill | rect
                             color: 'blue',     // gold | blue | silver | black
                             tagline: false}}/>
-
                 </div>
             </Wrapper>
         )

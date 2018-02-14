@@ -75,6 +75,7 @@ const RewardsContainer = styled.div`
     display: flex;
     flex-flow: row wrap;
     padding: 50px;
+    justify-content: center;
 
     & header{
         width: 100%;
@@ -89,6 +90,8 @@ const RewardsContainer = styled.div`
         order: 2;
         height: 175px;
         font-size: 0.7em;
+        max-width: 200px;
+        min-width: 100px;
         @media (max-width: 767px) {
             font-size: 0.6em;
             height: 150px;
@@ -177,7 +180,8 @@ const Rewards = ({ data, transition }) => (
                         {data.rank.edges.map((edge)=>{
                             let Rank = edge.node.frontmatter
                             return(
-                                <PaymentButton rank={Rank} subscribe={false} to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}} key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for {Rank.amount}$</PaymentButton>
+                                
+                                <PaymentButton rank={Rank} subscribe={false} to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}} key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for <br/>{Rank.amount}$</PaymentButton>
                             )
                         })}
                     </ButtonContainer>

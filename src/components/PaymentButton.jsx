@@ -14,6 +14,7 @@ const Button = styled.div`
     display: inline-block;
     font-size: 36px;
     cursor: pointer;
+
 `;
 const ButtonContainer = styled.div`
     display: flex;
@@ -21,6 +22,7 @@ const ButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
+    margin-bottom: 10px;
 `;
 
 export default class PaymentButton extends React.Component{

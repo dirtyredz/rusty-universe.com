@@ -89,9 +89,9 @@ class PaypalForm extends React.Component{
         return new paypal.Promise((resolve, reject) => {
 
             // Call your server side to get the Payment ID from step 3, then pass it to the resolve callback
-            let PaypalApiUrl = 'http://api.dirtyredz.com/paypal/payment/CreatePayment'
+            let PaypalApiUrl = 'https://api.dirtyredz.com/paypal/payment/CreatePayment'
             if (this.props.subscribe)
-                PaypalApiUrl = 'http://api.dirtyredz.com/paypal/billing/CreatePlan'
+                PaypalApiUrl = 'https://api.dirtyredz.com/paypal/billing/CreatePlan'
 
             fetch(PaypalApiUrl,{
                 method: 'POST',
@@ -120,14 +120,14 @@ class PaypalForm extends React.Component{
     onAuthorize(data, actions){
         console.log("onAuth",data, actions,data.paymentID,data.payerID)
 
-        let PaypalApiUrl = 'http://api.dirtyredz.com/paypal/payment/ExecutePayment'
+        let PaypalApiUrl = 'https://api.dirtyredz.com/paypal/payment/ExecutePayment'
         let body = {
             PaymentID: data.paymentID,
             PayerID: data.payerID,
             ClientID: this.ClientID
         }
         if (this.props.subscribe){
-            PaypalApiUrl = 'http://api.dirtyredz.com/paypal/billing/ExecuteAgreement'
+            PaypalApiUrl = 'https://api.dirtyredz.com/paypal/billing/ExecuteAgreement'
             body = {
                 Token: data.paymentToken,
                 ClientID: this.ClientID

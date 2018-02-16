@@ -177,7 +177,7 @@ class PaypalForm extends React.Component{
                         payment={this.payment.bind(this)}
                         onAuthorize={this.onAuthorize.bind(this)}
                         onCancel={this.onCancel.bind(this)}
-                        env='live'
+                        env='production'
                         style={{
                             label: 'paypal',
                             size:  'medium',    // small | medium | large | responsive

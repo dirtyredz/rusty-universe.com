@@ -73,6 +73,7 @@ class PaypalForm extends React.Component{
             this.state={Message: props.rank.amount + ' One Time Donation'}
         }
         this.ClientID = "AaPLwkvLQKssgPC7QvZ1UiKFHfqigDlNEye34LMAx18bJBnHECN-_kuU2VgIJSsVEKxrzmr7a3fPi_pG"
+        this.PaymentExperienceID = "XP-Q6SC-RSS8-BUAF-7CMN"
     }
     componentDidMount(){
         this.keyup = document.addEventListener("keyup", (event)=>{
@@ -100,7 +101,8 @@ class PaypalForm extends React.Component{
                     Description: "InGameName: " + this.InGameName.value + ", DiscordName: " + this.DiscordName.value,
                     Amount: this.props.rank.amount,
                     Rank: this.props.rank.title,
-                    ClientID: this.ClientID
+                    ClientID: this.ClientID,
+                    ExperienceID: this.PaymentExperienceID
                 })
             })
             .then((response) => {return response.json()})

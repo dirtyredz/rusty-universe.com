@@ -17,6 +17,13 @@ module.exports = {
             name: "markdown-pages",
           },
         },
+        {
+          resolve: `gatsby-source-filesystem`,
+          options: {
+            path: `${__dirname}/servers`,
+            name: "markdown-pages",
+          },
+        },
         `gatsby-transformer-remark`,
         `gatsby-plugin-netlify-cms`,
         'gatsby-plugin-react-helmet',

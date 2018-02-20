@@ -5,6 +5,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "detect-passive-events": "^1.0.4",
+    "feedparser": "^2.2.9",
     "gatsby": "^1.9.194",
     "gatsby-link": "^1.6.37",
     "gatsby-plugin-netlify-cms": "^1.0.7",
@@ -18,7 +19,8 @@
     "react-helmet": "^5.2.0",
     "react-scroll-up-button": "^1.5.11",
     "react-transition-group": "^2.2.1",
-    "styled-components": "^3.1.6"
+    "styled-components": "^3.1.6",
+    "xml-parser": "^1.2.1"
   },
   "keywords": [
     "gatsby"

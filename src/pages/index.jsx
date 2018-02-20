@@ -4,8 +4,9 @@ import DiscordTab from '../components/DiscordTab'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-    min-height: calc(100vh - 100px);
-    position: relative;
+min-height: calc(100vh - 200px);
+position: relative;
+padding-bottom: 100px;
 `;
 const Home = ({ transition, props }) =>(
     <Wrapper style={transition && transition.style}>

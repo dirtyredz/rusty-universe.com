@@ -131,11 +131,7 @@ export default class CenterLinks extends React.Component {
                         </Link>
                     </Item>
                     <Item style={(this.state.Loaded2) ? {} : {opacity: 0}} ref={(a) => { this.Two = a; }}>
-                        <Link
-                            to="/Forum"
-                            onClick={this.Animate.bind(this,this.One,this.Three)}>
-                            <span>FORUM</span>
-                        </Link>
+                        <a target="_blank" href="http://www.avorion.net/forum/index.php/topic,798.0.html">FORUM</a>
                     </Item>
                     <Item style={(this.state.Loaded3) ? {} : {opacity: 0}} ref={(a) => { this.Three = a; }}>
                         <Link

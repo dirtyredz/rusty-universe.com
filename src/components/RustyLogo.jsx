@@ -8,6 +8,7 @@ const StyledDiv = styled.div`
   transition: opacity 2s;
   float: left;
   padding-left: 10px;
+
 `;
 const StyledSVG = styled.svg`
   height: 100%;
@@ -17,6 +18,10 @@ const StyledSVG = styled.svg`
   stroke-width: 0;
   stroke: white;
   fill: white;
+  transition: fill 1s linear;
+  &:hover{
+      fill: red;
+  }
 `;
 
 export default () => {

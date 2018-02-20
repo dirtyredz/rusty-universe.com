@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import ServerCard from '../components/ServerCard'
+import randomcolor from 'randomcolor'
 
 const Wrapper = styled.div`
     min-height: calc(100vh - 200px);
@@ -31,6 +32,7 @@ const Home = ({ data, transition }) => (
                     description={a.node.frontmatter.description}
                     ip={a.node.frontmatter.ip}
                     interface={a.node.frontmatter.interface}
+                    color={randomcolor()}
                     />
             })}
         </ServerWrapper>

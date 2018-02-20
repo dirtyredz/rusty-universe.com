@@ -5,7 +5,6 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "detect-passive-events": "^1.0.4",
-    "feedparser": "^2.2.9",
     "gatsby": "^1.9.194",
     "gatsby-link": "^1.6.37",
     "gatsby-plugin-netlify-cms": "^1.0.7",
@@ -16,6 +15,7 @@
     "gsap": "^1.20.3",
     "paypal-checkout": "^4.0.173",
     "prop-types": "^15.6.0",
+    "randomcolor": "^0.5.3",
     "react-helmet": "^5.2.0",
     "react-scroll-up-button": "^1.5.11",
     "react-transition-group": "^2.2.1",

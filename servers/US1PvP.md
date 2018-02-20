@@ -4,6 +4,6 @@ country: US
 pvp: true
 description: Modded CorePvP
 ip: 69.30.246.170
-interface: http://69.30.246.170:8080
+interface: https://us1.rusty-universe.com
 ---
 

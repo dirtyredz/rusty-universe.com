@@ -65,7 +65,7 @@ class ServerCard extends React.Component {
     getServerRSS(url){
 
         return new Promise( (resolve, reject) => {
-          fetch("https://"+url + "/rss")
+          fetch(url + "/rss")
           .then((res)=>res.body)
           .then((body)=>{
               const reader = body.getReader();
@@ -96,7 +96,7 @@ class ServerCard extends React.Component {
         });
     }
     ParseRSSData(){
-        this.getServerRSS(this.props.ip)
+        this.getServerRSS(this.props.interface)
         .then((result)=>{
             let obj = parse(result).root.children[0].children
 
@@ -129,13 +129,15 @@ class ServerCard extends React.Component {
             <ServerBox>
                 <Section>
                     {console.log(this.props.country)}
-                    <ServerName><img width="23" src={this.props.country === "US" ? USLogo : EULogo }></img>{this.props.title}</ServerName>
+                    <ServerName><img width="23" src={this.props.country === "US" ? USLogo : EULogo }></img>{this.props.pvp ? "PVP" : "PVE"}</ServerName>
                 </Section>
                 <Section>
                     <div>Name: <span>{this.state.Name}</span></div>
                     <div>Status: <span>{this.state.Status}</span></div>
                     <div>Players: <span>{this.state.Players}</span></div>
                     <div>Load: <span>{this.state.Load}</span></div>
+                    <div>IP: <span>{this.props.ip}</span></div>
+                    <div><span>{this.props.description}</span></div>
                 </Section>
                 <br/>
                 <br/>

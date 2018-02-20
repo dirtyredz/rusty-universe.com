@@ -4,6 +4,6 @@ country: EU
 pvp: false
 description: Modded PvE
 ip: 89.163.150.103
-interface: http://89.163.150.103:8081
+interface: https://eu2.rusty-universe.com
 ---
 

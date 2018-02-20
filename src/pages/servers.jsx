@@ -25,10 +25,13 @@ const Home = ({ data, transition }) => (
                 console.log(a.node.frontmatter)
                 return <ServerCard
                     key={a.node.frontmatter.title + "_Container"}
-                    country={a.node.frontmatter.country}
                     title={a.node.frontmatter.title}
+                    country={a.node.frontmatter.country}
+                    pvp={a.node.frontmatter.pvp}
+                    description={a.node.frontmatter.description}
+                    ip={a.node.frontmatter.ip}
                     interface={a.node.frontmatter.interface}
-                    ip={a.node.frontmatter.ip}/>
+                    />
             })}
         </ServerWrapper>
     </Wrapper>

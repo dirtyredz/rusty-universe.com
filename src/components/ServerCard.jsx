@@ -63,8 +63,9 @@ class ServerCard extends React.Component {
         }
     }
     getServerRSS(url){
+
         return new Promise( (resolve, reject) => {
-          fetch(url + "/rss")
+          fetch("https://"+url + "/rss")
           .then((res)=>res.body)
           .then((body)=>{
               const reader = body.getReader();
@@ -95,7 +96,7 @@ class ServerCard extends React.Component {
         });
     }
     ParseRSSData(){
-        this.getServerRSS(this.props.interface)
+        this.getServerRSS(this.props.ip)
         .then((result)=>{
             let obj = parse(result).root.children[0].children
 

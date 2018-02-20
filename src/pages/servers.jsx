@@ -27,7 +27,8 @@ const Home = ({ data, transition }) => (
                     key={a.node.frontmatter.title + "_Container"}
                     country={a.node.frontmatter.country}
                     title={a.node.frontmatter.title}
-                    interface={a.node.frontmatter.interface}/>
+                    interface={a.node.frontmatter.interface}
+                    ip={a.node.frontmatter.ip}/>
             })}
         </ServerWrapper>
     </Wrapper>

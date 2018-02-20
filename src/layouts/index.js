@@ -16,6 +16,7 @@ const TemplateWrapper = ({ children }) => (
       meta={[
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
+        { "http-equiv": 'Content-Security-Policy', content: 'upgrade-insecure-requests' },
       ]}
     />
     <Header />

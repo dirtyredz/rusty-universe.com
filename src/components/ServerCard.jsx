@@ -155,7 +155,6 @@ class ServerCard extends React.Component {
                     <div><span>{this.props.description}</span></div>
                 </Section>
                 <br/>
-                <br/>
                 <Section color={this.props.color}>
                     <div><span><a>{this.props.interface}</a></span></div>
                 </Section>

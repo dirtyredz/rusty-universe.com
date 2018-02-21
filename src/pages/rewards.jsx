@@ -22,9 +22,11 @@ injectGlobal`
   }
 `;
 const Wrapper = styled.div`
-min-height: calc(100vh - 200px);
-position: relative;
-padding-bottom: 100px;
+width: 100%;
+flex: 2;
+display: flex;
+align-items: center;
+align-content: center;
 `;
 const FlexWrapper = styled.div`
     display: flex;
@@ -180,10 +182,7 @@ const Rewards = ({ data, transition }) => (
                     <ButtonContainer>
                         {data.rank.edges.map((edge)=>{
                             let Rank = edge.node.frontmatter
-                            return(
-
-                                <PaymentButton rank={Rank} subscribe={false} to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}} key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for <br/>{Rank.amount}$</PaymentButton>
-                            )
+                            return <PaymentButton rank={Rank} subscribe={false} to={{pathname: "/Donate", state: {rank: Rank.title, subscribe: true}}} key={"OneTimeDonation_"+Rank.title.toString()}>Donate Once for <br/>{Rank.amount}$</PaymentButton>
                         })}
                     </ButtonContainer>
                 </DonationWrapper>

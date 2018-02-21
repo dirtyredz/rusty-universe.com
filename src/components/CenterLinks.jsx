@@ -12,23 +12,16 @@ injectGlobal`
 `;
 
 const Parent = styled.div`
-    height: 100%;
     width: 100%;
     color: #4D9BE9;
     font-size: calc(80px + 11 * ((100vw - 320px) / 1360));
-`;
-
-const Child = styled.div`
-    position: absolute;
-    top: calc(50% - 100px);
-    left: 50%;
     width: 70%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
+    padding-left: 15%;
+    padding-right: 15%;
     text-align: center;
     font-family: "TallLean";
     display: flex;
-    flex-wrap: nowrap;
+    align-items: center;
     @media (max-width: 767px) {
         flex-direction: column;
     }
@@ -122,25 +115,27 @@ export default class CenterLinks extends React.Component {
     render(){
         return(
             <Parent >
-                <Child>
-                    <Item style={(this.state.Loaded1) ? {} : {opacity: 0}} ref={(a) => { this.One = a; }}>
-                        <Link
-                            onClick={this.Animate.bind(this,this.Two,this.Three)}
-                            to="/Rewards">
-                            <span>DONATE</span>
-                        </Link>
-                    </Item>
-                    <Item style={(this.state.Loaded2) ? {} : {opacity: 0}} ref={(a) => { this.Two = a; }}>
-                        <a target="_blank" href="http://www.avorion.net/forum/index.php/topic,798.0.html">FORUM</a>
-                    </Item>
-                    <Item style={(this.state.Loaded3) ? {} : {opacity: 0}} ref={(a) => { this.Three = a; }}>
-                        <Link
-                            to="/Servers"
-                            onClick={this.Animate.bind(this,this.One, this.Two)}>
-                            <span>SERVERS</span>
-                        </Link>
-                    </Item>
-                </Child>
+                <Item style={(this.state.Loaded1) ? {} : {opacity: 0}} ref={(a) => { this.One = a; }}>
+                    <Link
+                        onClick={this.Animate.bind(this,this.Two,this.Three)}
+                        to="/Rewards">
+                        <span>DONATE</span>
+                    </Link>
+                </Item>
+                <Item style={(this.state.Loaded2) ? {} : {opacity: 0}} ref={(a) => { this.Two = a; }}>
+                    <Link
+                        onClick={this.Animate.bind(this,this.One,this.Three)}
+                        to="/Rusty">
+                        <span>RUSTY</span>
+                    </Link>
+                </Item>
+                <Item style={(this.state.Loaded3) ? {} : {opacity: 0}} ref={(a) => { this.Three = a; }}>
+                    <Link
+                        to="/Servers"
+                        onClick={this.Animate.bind(this,this.One, this.Two)}>
+                        <span>SERVERS</span>
+                    </Link>
+                </Item>
             </Parent>
         )
     }

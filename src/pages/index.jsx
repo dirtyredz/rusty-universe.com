@@ -4,9 +4,11 @@ import DiscordTab from '../components/DiscordTab'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-min-height: calc(100vh - 200px);
-position: relative;
-padding-bottom: 100px;
+    width: 100%;
+    flex: 2;
+    display: flex;
+    align-items: center;
+    align-content: center;
 `;
 const Home = ({ transition, props }) =>(
     <Wrapper style={transition && transition.style}>

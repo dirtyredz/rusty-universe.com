@@ -13,7 +13,8 @@ injectGlobal`
 const StyledHeader = styled.header`
     width: 100%;
     height: 100px;
-    display: flex;
+    max-height: 100px;
+    flex: 1;
     opacity: 0;
     transition: opacity 1s;
 `;
@@ -21,12 +22,12 @@ const Title = styled.div`
     font-family: "TallLean";
     font-size: calc(50px + 20 * ((100vw - 320px) / 1360));
     color: white;
-    position: relative;
     padding-left: 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
+    height: 100%;
     white-space: nowrap;
 `;
 const Loaded = {

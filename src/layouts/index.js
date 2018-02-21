@@ -5,10 +5,18 @@ import ScrollUpButton from 'react-scroll-up-button'
 import AwesomeBackground from '../components/AwesomeBackground'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import styled from 'styled-components'
 import './index.css'
 
+const Wrapper = styled.div`
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly
+`
+
 const TemplateWrapper = ({ children }) => (
-  <div style={{height: '100%'}}>
+  <Wrapper>
     <AwesomeBackground/>
     <ScrollUpButton/>
     <Helmet
@@ -21,7 +29,7 @@ const TemplateWrapper = ({ children }) => (
     <Header />
     {children()}
     <Footer />
-  </div>
+</Wrapper>
 )
 
 TemplateWrapper.propTypes = {

@@ -4,38 +4,33 @@ import ServerCard from '../components/ServerCard'
 import randomcolor from 'randomcolor'
 
 const Wrapper = styled.div`
-    min-height: calc(100vh - 200px);
-    position: relative;
-    padding-bottom: 100px;
-`;
-const ServerWrapper = styled.div`
+    width: 100%;
+    flex: 2;
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
     align-content: center;
+    justify-content: space-evenly;
     padding-left: 10%;
     flex-wrap: wrap;
     padding-right: 10%;
     width: 80%;
-`
+`;
 
 const Home = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
-        <ServerWrapper>
-            {data.servers.edges.map((a)=>{
-                console.log(a.node.frontmatter)
-                return <ServerCard
-                    key={a.node.frontmatter.title + "_Container"}
-                    title={a.node.frontmatter.title}
-                    country={a.node.frontmatter.country}
-                    pvp={a.node.frontmatter.pvp}
-                    description={a.node.frontmatter.description}
-                    ip={a.node.frontmatter.ip}
-                    interface={a.node.frontmatter.interface}
-                    color={randomcolor()}
-                    />
-            })}
-        </ServerWrapper>
+        {data.servers.edges.map((a)=>{
+            console.log(a.node.frontmatter)
+            return <ServerCard
+                key={a.node.frontmatter.title + "_Container"}
+                title={a.node.frontmatter.title}
+                country={a.node.frontmatter.country}
+                pvp={a.node.frontmatter.pvp}
+                description={a.node.frontmatter.description}
+                ip={a.node.frontmatter.ip}
+                interface={a.node.frontmatter.interface}
+                color={randomcolor()}
+                />
+        })}
     </Wrapper>
 )
 

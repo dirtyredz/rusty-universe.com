@@ -10,18 +10,34 @@ const AnnouncmentsContainer = styled(Scrollbars)`
     margin-right: 15%;
     background: #36393eb5;
     border-radius: 10px;
+    font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
 `
 const Announcment = styled.div`
     padding: 20px;
+    display: block;
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+    overflow-wrap: break-word;
+    -ms-word-break: break-all;
+    word-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.1em;
+    white-space: pre-wrap;
 `
 const Author = styled.div`
-    color: red;
+    color: rgb(207, 37, 37);
     padding-bottom: 5px;
+    font-size: 20px;
+    letter-spacing: 0;
+    font-weight: 500;
+
 `
 const Message = styled.div`
-    padding-left: 10px;
+    padding-left: 20px;
 `
 const HighlightedMessage = styled(Message)`
+    margin-left: 20px;
     display: block;
     background: #faa61a4f;
     border-left: 4px solid #FAA61A;
@@ -61,7 +77,7 @@ class RustyAnnouncments extends React.Component {
         this.state = {Announcments: false}
     }
     componentDidMount(){
-        fetch("http://dirtybot.us-east-2.elasticbeanstalk.com/")
+        fetch("https://dirtybot.dirtyredz.com/")
         .then((response) => {return response.json()})
         .then((responseObject) => {
             this.setState({Announcments: responseObject})

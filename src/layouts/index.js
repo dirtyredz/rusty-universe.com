@@ -7,6 +7,8 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import styled from 'styled-components'
 import './index.css'
+import WidgetBot from '../components/WidgetBot'
+
 
 const Wrapper = styled.div`
     min-height: 100%;
@@ -28,6 +30,7 @@ const TemplateWrapper = ({ children }) => (
     />
     <Header />
     {children()}
+    <WidgetBot/>
     <Footer />
 </Wrapper>
 )

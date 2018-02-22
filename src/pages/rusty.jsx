@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import RustyAnnouncments from '../components/RustyAnnouncments'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -8,18 +9,10 @@ const Wrapper = styled.div`
     align-items: center;
     align-content: center;
 `;
-const WidgetBot = styled.embed`
-    width: 80%;
-    height: 600px;
-    padding-left: 10%;
-    padding-right: 10%;
-    &:#document html body{
-        background: pink;
-    }
-`
+
 const Rusty = ({ transition, props }) =>(
     <Wrapper style={transition && transition.style}>
-        <WidgetBot src="https://widgetbot.io/embed/268923609387368448/268923706062012419/1002/" />
+        <RustyAnnouncments/>
     </Wrapper>
 )
 

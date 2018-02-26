@@ -10,7 +10,12 @@ const AnnouncmentsContainer = styled(Scrollbars)`
     margin-right: 15%;
     background: #36393eb5;
     border-radius: 10px;
-    font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
+    font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+    @media (max-width: 767px) {
+        width:95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
 `
 const Announcment = styled.div`
     padding: 20px;

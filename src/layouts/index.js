@@ -8,6 +8,7 @@ import Header from '../components/Header'
 import styled from 'styled-components'
 import './index.css'
 import WidgetBot from '../components/WidgetBot'
+import galaxy from '../components/resources/galaxy.jpg'
 
 
 const Wrapper = styled.div`
@@ -17,23 +18,43 @@ const Wrapper = styled.div`
     justify-content: space-evenly
 `
 
-const TemplateWrapper = ({ children }) => (
-  <Wrapper>
-    <AwesomeBackground/>
-    <ScrollUpButton/>
-    <Helmet
-      title="Rusty-Universe"
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-    <Header />
-    {children()}
-    <WidgetBot/>
-    <Footer />
-</Wrapper>
-)
+class TemplateWrapper extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={Loaded: false}
+    }
+    onLoaded(){
+        this.setState({Loaded: true})
+    }
+    render(){
+        if(this.state.Loaded){
+            return(
+
+                <Wrapper>
+                  <AwesomeBackground/>
+                  <ScrollUpButton/>
+                  <Helmet
+                    title="Rusty-Universe"
+                    meta={[
+                      { name: 'description', content: 'Sample' },
+                      { name: 'keywords', content: 'sample, something' },
+                    ]}
+                  />
+                  <Header />
+                  {this.props.children()}
+                  <WidgetBot/>
+                  <Footer />
+              </Wrapper>
+            )
+        }else{
+            return(
+                <img height="1" width="1" onLoad={this.onLoaded.bind(this)} src={galaxy}/>
+            )
+        }
+
+    }
+}
+
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,

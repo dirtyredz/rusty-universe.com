@@ -45,6 +45,8 @@ export default () => {
             </Item>
             <Item>
                 DEVELOPED BY DAVID MCCLAIN | DIRTYREDZ.COM
+                <br/>
+                MUSIC AND SOUND BY FIRETAIL STUDIOS
             </Item>
         </Footer>
     )

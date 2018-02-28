@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import dots from './resources/dots.png'
 import dots2 from './resources/dots2.png'
 import galaxy from './resources/galaxy.jpg'
+import BackgroundMusic from './resources/Background_Rusty.mp3'
 
 const StackedCanvas = styled.canvas`
     position: absolute;
@@ -51,6 +52,9 @@ const Galaxy = styled.div`
 
 export default class AwesomeBackground extends React.Component {
     componentDidMount(){
+        const Audio = ReactDOM.findDOMNode(this.Audio)
+        Audio.volume = 0.1;
+
         let MiddleLayer, MiddleCTX, BackLayer, BackCTX, FrontLayer, FrontCTX;
 
         BackLayer = ReactDOM.findDOMNode(this.BackLayer)
@@ -126,7 +130,7 @@ export default class AwesomeBackground extends React.Component {
         setTimeout(()=>{
 
             TweenLite.to(TheBG, 2, {roation: 0.01,opacity: 0.7});
-            TweenLite.to(TheBG, 5, {roation: 0.01,scale: 1.2,onComplete:breath,ease:Linear.ease});
+            TweenLite.to(TheBG, 10, {roation: 0.01,scale: 1.2,onComplete:breath,ease:Linear.ease});
             TweenLite.to(BackLayer, 5, {roation: 0.01,opacity: 0.8,delay:2});
             TweenLite.to(FrontLayer, 10, {roation: 0.01,opacity: 0.5,delay:5});
         },1);
@@ -135,6 +139,9 @@ export default class AwesomeBackground extends React.Component {
     render() {
         return(
             <Wrapper>
+                <audio ref={(Node)=>this.Audio = Node} autoPlay loop>
+                    <source src={BackgroundMusic}/>
+                </audio>
                 <Galaxy ref={(a)=>{this.GalaxyBG = a}}/>
                 <MouseParallax>
                     <StackedCanvas ref={(a)=>{this.BackLayer = a}} id="BackLayer"></StackedCanvas>

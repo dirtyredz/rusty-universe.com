@@ -5,6 +5,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "detect-passive-events": "^1.0.4",
+    "fontfaceobserver": "^2.0.13",
     "gatsby": "^1.9.194",
     "gatsby-link": "^1.6.37",
     "gatsby-plugin-netlify-cms": "^1.0.7",
@@ -19,6 +20,7 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-helmet": "^5.2.0",
     "react-load-script": "0.0.6",
+    "react-loading-skeleton": "^0.4.0",
     "react-scroll-up-button": "^1.5.11",
     "react-transition-group": "^2.2.1",
     "sanitize-html": "^1.18.2",

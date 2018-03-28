@@ -82,7 +82,7 @@ class RustyAnnouncments extends React.Component {
         this.state = {Announcments: false}
     }
     componentDidMount(){
-        fetch("https://dirtybot.dirtyredz.com/")
+        fetch("https://7vo29h6nnd.execute-api.us-east-2.amazonaws.com/production/DirtyBot")
         .then((response) => {return response.json()})
         .then((responseObject) => {
             this.setState({Announcments: responseObject})

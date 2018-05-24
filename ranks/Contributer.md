@@ -16,4 +16,3 @@ rankRewards:
   - amount: '1'
     reward: DistCore
 ---
-

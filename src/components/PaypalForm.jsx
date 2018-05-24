@@ -72,8 +72,7 @@ class PaypalForm extends React.Component{
         }else{
             this.state={Message: props.rank.amount + ' One Time Donation'}
         }
-        this.ClientID = "AaPLwkvLQKssgPC7QvZ1UiKFHfqigDlNEye34LMAx18bJBnHECN-_kuU2VgIJSsVEKxrzmr7a3fPi_pG"
-        this.PaymentExperienceID = "XP-Q6SC-RSS8-BUAF-7CMN"
+        this.ClientID = "AcWJhM_GK9zqjwpnWKtRSXbHV1eRdFyNmlq-4FAQMZDLmZYPyI9d-ViWRst236DrbWlaSaS7wWeMP5RM"//"AaPLwkvLQKssgPC7QvZ1UiKFHfqigDlNEye34LMAx18bJBnHECN-_kuU2VgIJSsVEKxrzmr7a3fPi_pG"
     }
     componentDidMount(){
         this.keyup = document.addEventListener("keyup", (event)=>{
@@ -90,11 +89,11 @@ class PaypalForm extends React.Component{
         return new paypal.Promise((resolve, reject) => {
 
             // Call your server side to get the Payment ID from step 3, then pass it to the resolve callback
-            let PaypalApiUrl = 'https://api.dirtyredz.com/paypal/payment/CreatePayment'
+            let Type = 'Create_Payment'
             if (this.props.subscribe)
-                PaypalApiUrl = 'https://api.dirtyredz.com/paypal/billing/CreatePlan'
+              Type = 'Create_Subscription'
 
-            fetch(PaypalApiUrl,{
+            fetch('https://weti5kvhmk.execute-api.us-east-2.amazonaws.com/paypal_bot_dev/paypal_payment',{
                 method: 'POST',
                 headers: {'content-type': 'application/x-www-form-urlencoded'},
                 body: JSON.stringify({
@@ -102,19 +101,20 @@ class PaypalForm extends React.Component{
                     Amount: this.props.rank.amount,
                     Rank: this.props.rank.title,
                     ClientID: this.ClientID,
-                    ExperienceID: this.PaymentExperienceID
+                    Type: Type
                 })
             })
             .then((response) => {return response.json()})
             .then((responseObject) => {
+                console.log("success",responseObject)
                 if (this.props.subscribe){
                     resolve(responseObject.Token);
                 }else{
-                    resolve(responseObject.paymentID);
+                    resolve(responseObject.id);
                 }})
             .catch((err) => {
-                reject(err)
-        		console.log("Fetch error: " + err);
+              reject(err)
+        		  console.log("Fetch error: " + err);
             });
         })
     };
@@ -122,21 +122,22 @@ class PaypalForm extends React.Component{
     onAuthorize(data, actions){
         console.log("onAuth",data, actions,data.paymentID,data.payerID)
 
-        let PaypalApiUrl = 'https://api.dirtyredz.com/paypal/payment/ExecutePayment'
         let body = {
             PaymentID: data.paymentID,
             PayerID: data.payerID,
-            ClientID: this.ClientID
+            ClientID: this.ClientID,
+            Type: "Execute_Payment"
         }
+
         if (this.props.subscribe){
-            PaypalApiUrl = 'https://api.dirtyredz.com/paypal/billing/ExecuteAgreement'
             body = {
                 Token: data.paymentToken,
-                ClientID: this.ClientID
+                ClientID: this.ClientID,
+                Type: "Execute_Subscription"
             }
         }
 
-        fetch(PaypalApiUrl,{
+        fetch('https://weti5kvhmk.execute-api.us-east-2.amazonaws.com/paypal_bot_dev/paypal_payment',{
             method: 'POST',
             headers: {'content-type': 'application/x-www-form-urlencoded'},
             body: JSON.stringify(body)
@@ -179,7 +180,7 @@ class PaypalForm extends React.Component{
                         payment={this.payment.bind(this)}
                         onAuthorize={this.onAuthorize.bind(this)}
                         onCancel={this.onCancel.bind(this)}
-                        env='production'
+                        env='sandbox'//production
                         style={{
                             label: 'paypal',
                             size:  'medium',    // small | medium | large | responsive

@@ -24,10 +24,11 @@ const Item = styled.div`
     justify-content: center;
     flex-direction: column;
     padding-left: 50px;
-    padding-right: 50px;
+    padding-right: 100px;
 `;
 
 const Inline = styled.div`
+    font-size:45px;
     width: 200px;
     display: flex;
     justify-content: space-between;

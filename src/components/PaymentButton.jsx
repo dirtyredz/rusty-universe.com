@@ -46,9 +46,6 @@ const ButtonContainer = styled.div`
     &:hover div span.FX{
         animation: ${FX} .3s linear alternate;
     }
-    &:hover div{
-        box-shadow: 0px 0px 10px 5px rgba(155, 175, 230,0.5);
-    }
 `;
 
 export default class PaymentButton extends React.Component{

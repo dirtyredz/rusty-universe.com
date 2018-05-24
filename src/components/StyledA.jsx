@@ -9,7 +9,7 @@ injectGlobal`
   }
 `;
 const ATag = styled.a`
-    font-family: 'TallLean'
+    font-family: 'TallLean';
     color: #4D9BE9;
     font-size: 1.1em;
     text-decoration: none;

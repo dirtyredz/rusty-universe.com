@@ -41,6 +41,8 @@ const Galaxy = styled.div`
     z-index: -1;
     content: "";
     background: url("${galaxy}");
+    background-repeat: no-repeat;
+    background-size: cover;
     opacity: 0;
     top: 0;
     left: 0;
@@ -90,7 +92,7 @@ export default class AwesomeBackground extends React.Component {
 
         let start = () => {
             //Settup canvas
-            BackLayer.width  = 2000;
+            BackLayer.width  = 4000;
             BackLayer.height = 2000;
             BackCTX = BackLayer.getContext('2d');
 
@@ -128,7 +130,6 @@ export default class AwesomeBackground extends React.Component {
         }
         setTimeout(start, 500);
         setTimeout(()=>{
-
             TweenLite.to(TheBG, 2, {roation: 0.01,opacity: 0.7});
             TweenLite.to(TheBG, 10, {roation: 0.01,scale: 1.2,onComplete:breath,ease:Linear.ease});
             TweenLite.to(BackLayer, 5, {roation: 0.01,opacity: 0.8,delay:2});

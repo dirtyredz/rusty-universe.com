@@ -143,6 +143,7 @@ const Rewards = ({ data, transition }) => (
         />
         <FlexWrapper>
             {data.rank.edges.sort((a,b)=>{
+                console.log(a.node.frontmatter)
                 return a.node.frontmatter.amount-b.node.frontmatter.amount
             }).map((edge)=>{
                 let Rank = edge.node.frontmatter

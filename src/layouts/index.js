@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly
+    justify-content: space-evenly;
 `
 
 class TemplateWrapper extends React.Component{

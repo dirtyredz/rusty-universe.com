@@ -23,7 +23,7 @@ class WidgetBot extends React.Component {
           let Wait = ()=>{
               let WidgetButton = document.getElementsByClassName('crate-toggle')
               if (WidgetButton.length > 0){
-                  WidgetButton[0].setAttribute('style',"bottom: 50px !important" )
+                  WidgetButton[0].setAttribute('style',"bottom: 100px !important" )
                   let Crate = document.getElementsByClassName('crate')
                   Array.prototype.slice.call( Crate ).map((node)=>node.style.display= "block")
                   return

@@ -9,10 +9,25 @@ const Wrapper = styled.div`
     align-items: center;
     align-content: center;
 `;
-const Home = ({ transition, props }) =>(
+const Home = ({ data, transition, props }) =>(
     <Wrapper style={transition && transition.style}>
-        <CenterLinks/>
+        <CenterLinks data/>
     </Wrapper>
 )
 
+export const pageQuery = graphql`
+  query PagesQuery {
+      pages: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/pages/"}}) {
+          edges {
+            node {
+              frontmatter{
+               title
+               description
+               markdown
+             }
+            }
+          }
+      }
+  }
+`;
 export default Home

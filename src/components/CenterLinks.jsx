@@ -113,6 +113,7 @@ export default class CenterLinks extends React.Component {
     }
 
     render(){
+      console.log(this.data)
         return(
             <Parent >
                 <Item style={(this.state.Loaded1) ? {} : {opacity: 0}} ref={(a) => { this.One = a; }}>

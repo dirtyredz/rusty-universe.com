@@ -1,5 +1,7 @@
 ---
 title: Rusty
-description: 'Rusty Main Page.'
+path: '/Rusty'
+description: Rusty Main Page.
 markdown: 'Rusty Main Page..'
 ---
+BLAH

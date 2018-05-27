@@ -11,22 +11,20 @@ const Wrapper = styled.div`
 `;
 const Home = ({ data, transition, props }) =>(
     <Wrapper style={transition && transition.style}>
-        <CenterLinks data/>
+        <CenterLinks data={data}/>
     </Wrapper>
 )
 
 export const pageQuery = graphql`
-  query PagesQuery {
-      sitePages: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sitePages/"}}) {
-          edges {
-            node {
-              frontmatter{
-               title
-               description
-             }
-            }
-          }
+  query RustyPageExsists {
+    markdownRemark(frontmatter: {title: {eq: "Rusty"} }) {
+      html
+      frontmatter {
+        title
+        description
+        markdown
       }
+    }
   }
 `;
 export default Home

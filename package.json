@@ -21,6 +21,7 @@
     "react-helmet": "^5.2.0",
     "react-load-script": "0.0.6",
     "react-loading-skeleton": "^0.4.0",
+    "react-markdown": "^3.3.2",
     "react-scroll-up-button": "^1.5.11",
     "react-transition-group": "^2.2.1",
     "sanitize-html": "^1.18.2",

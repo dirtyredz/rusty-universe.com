@@ -32,7 +32,6 @@ collections:
       - { name: title, label: Title, widget: "string"}
       - { name: description, label: Description, widget: "string"}
       - { name: amount, label: "Currency Amount", widget: "number"}
-      - { name: "markdown", label: "markdown content",, widget: "markdown"}
       - name: rankRewards
         label: Rank Rewards
         widget: list
@@ -44,13 +43,11 @@ collections:
               collection: "rewards"
               searchFields: ["description", "title"]
               valueField: "title"
-  - name: rusty
-    label: Rusty
-    delete: false # Prevent users from deleting documents in this collection
-    files:
-    - label: "Rusty"
-      name: "rusty"
-      file: "pages/rusty.yml"
-      fields:
-        - {label: Title, name: title, widget: string}
-        - {label: Content, name: content, widget: markdown}
+  - name: pages
+    label: Pages
+    folder: pages
+    create: true
+    fields:
+      - { name: title, label: Title, widget: "string"}
+      - { name: description, label: Description, widget: "string"}
+      - { name: "markdown", label: "markdown content",, widget: "markdown"}

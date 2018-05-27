@@ -28,7 +28,7 @@ const sitePageTemplate = ({ data, transition, props }) =>{
   const {frontmatter, html } = sitePage
   return(
     <Wrapper style={transition && transition.style}>
-      <div dangerouslySetInnerHTML={{__html: html}}/>
+      <div dangerouslySetInnerHTML={{__html: frontmatter.markdown}}/>
     </Wrapper>
   )
 }

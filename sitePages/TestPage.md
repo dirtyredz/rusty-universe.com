@@ -2,6 +2,11 @@
 title: Test Page
 path: '/TestPage'
 description: Test Page.
-markdown: 'Test Page.'
+markdown: '<div>
+some awesome HTML
+</div>'
+main: false
 ---
-BLAH Test
+<div>
+some awesome HTML
+</div>

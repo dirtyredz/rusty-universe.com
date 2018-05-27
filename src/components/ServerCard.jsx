@@ -76,7 +76,6 @@ class ServerCard extends React.Component {
             Load: "-----",
             BG: this["ServerCardBG_"+randomNumber]
         }
-        console.log(this.state.BG)
     }
     getServerRSS(url){
 

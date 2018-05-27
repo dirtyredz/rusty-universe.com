@@ -129,9 +129,6 @@ const ButtonContainer = styled.div`
         flex: 1 0px;
     }
 `;
-const CallPaypal = (e,data) => {
-    console.log(e,data)
-}
 const Rewards = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
         <Helmet
@@ -143,7 +140,6 @@ const Rewards = ({ data, transition }) => (
         />
         <FlexWrapper>
             {data.rank.edges.sort((a,b)=>{
-                console.log(a.node.frontmatter)
                 return a.node.frontmatter.amount-b.node.frontmatter.amount
             }).map((edge)=>{
                 let Rank = edge.node.frontmatter

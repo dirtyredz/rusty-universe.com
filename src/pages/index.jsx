@@ -17,13 +17,12 @@ const Home = ({ data, transition, props }) =>(
 
 export const pageQuery = graphql`
   query PagesQuery {
-      pages: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/pages/"}}) {
+      sitePages: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sitePages/"}}) {
           edges {
             node {
               frontmatter{
                title
                description
-               markdown
              }
             }
           }

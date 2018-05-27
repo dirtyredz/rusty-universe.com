@@ -66,7 +66,6 @@ const CloseMe = styled.aside`
 class PaypalForm extends React.Component{
     constructor(props){
         super(props);
-        console.log(props)
         if (props.subscribe){
             this.state={Message: props.rank.amount + ' Subcription'}
         }else{
@@ -106,7 +105,6 @@ class PaypalForm extends React.Component{
             })
             .then((response) => {return response.json()})
             .then((responseObject) => {
-                console.log("success",responseObject)
                 if (this.props.subscribe){
                     resolve(responseObject.Token);
                 }else{
@@ -120,7 +118,6 @@ class PaypalForm extends React.Component{
     };
 
     onAuthorize(data, actions){
-        console.log("onAuth",data, actions,data.paymentID,data.payerID)
 
         let body = {
             PaymentID: data.paymentID,

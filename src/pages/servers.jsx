@@ -19,7 +19,6 @@ const Wrapper = styled.div`
 const Home = ({ data, transition }) => (
     <Wrapper style={transition && transition.style}>
         {data.servers.edges.map((a)=>{
-            console.log(a.node.frontmatter)
             return <ServerCard
                 key={a.node.frontmatter.title + "_Container"}
                 title={a.node.frontmatter.title}

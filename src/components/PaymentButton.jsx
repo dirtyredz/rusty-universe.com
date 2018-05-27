@@ -55,7 +55,6 @@ export default class PaymentButton extends React.Component{
     }
     TogglePaypal(e){
         this.setState({PopUp: !this.state.PopUp})
-        console.log('Toggling')
     }
     GlitchText(){
         let Button = ReactDOM.findDOMNode(this.button)

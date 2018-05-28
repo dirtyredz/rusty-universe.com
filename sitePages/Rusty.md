@@ -1,8 +1,11 @@
 ---
 title: Rusty
-path: '/Rusty'
+path: /Rusty
 description: Rusty Main Page.
-markdown: _**Welcome to Rusty's**_ <span>You Can Even Use HTML</span>
+markdown: |-
+  ![Space](/static/assets/download.jpg)
+
+  **_Welcome to Rusty's_** <span>You Can Even Use HTML</span>
 main: true
 ---
 

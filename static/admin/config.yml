@@ -2,7 +2,8 @@ backend:
   name: github
   repo: dirtyredz/rusty-universe.com
 
-media_folder: static/assets
+media_folder: static/static
+public_folder: "/static" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
   - name: servers

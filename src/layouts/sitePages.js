@@ -15,6 +15,7 @@ import Elixia from '../components/resources/ELIXIA.ttf'
 import EuroStyle from '../components/resources/EUROS3.ttf'
 import FontFaceObserver from 'fontfaceobserver'
 import RustyAnnouncments from '../components/RustyAnnouncments'
+import ReactMarkdown from 'react-markdown'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -29,15 +30,17 @@ const sitePageTemplate = ({ data, transition, props }) =>{
   const { frontmatter } = sitePage
   return(
     <Wrapper style={transition && transition.style}>
-      <div 
-        style={{
+      <div style={{
           width: "100%",
           color: "white",
           marginLeft: "10%",
           marginRight: "10%"
-        }} 
-        dangerouslySetInnerHTML={{__html: frontmatter.markdown}}
-      />
+        }}>
+          <ReactMarkdown
+            escapeHtml={false}
+            source={frontmatter.markdown}
+          />,
+      </div>
     </Wrapper>
   )
 }

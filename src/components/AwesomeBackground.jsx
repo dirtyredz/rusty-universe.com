@@ -101,7 +101,8 @@ class AwesomeBackground extends React.Component {
       this.Audio = Node
       if(!this.props.volume.Muted){
         const Audio = ReactDOM.findDOMNode(this.Audio)
-        Audio.volume = 0.1;
+        if(Audio)
+          Audio.volume = 0.1;
       }
     }
     render() {

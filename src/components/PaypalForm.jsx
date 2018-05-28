@@ -71,7 +71,7 @@ class PaypalForm extends React.Component{
         }else{
             this.state={Message: props.rank.amount + ' One Time Donation'}
         }
-        this.ClientID = "AcWJhM_GK9zqjwpnWKtRSXbHV1eRdFyNmlq-4FAQMZDLmZYPyI9d-ViWRst236DrbWlaSaS7wWeMP5RM"//"AaPLwkvLQKssgPC7QvZ1UiKFHfqigDlNEye34LMAx18bJBnHECN-_kuU2VgIJSsVEKxrzmr7a3fPi_pG"
+        this.ClientID = "AaPLwkvLQKssgPC7QvZ1UiKFHfqigDlNEye34LMAx18bJBnHECN-_kuU2VgIJSsVEKxrzmr7a3fPi_pG"
     }
     componentDidMount(){
         this.keyup = document.addEventListener("keyup", (event)=>{
@@ -177,7 +177,7 @@ class PaypalForm extends React.Component{
                         payment={this.payment.bind(this)}
                         onAuthorize={this.onAuthorize.bind(this)}
                         onCancel={this.onCancel.bind(this)}
-                        env='sandbox'//production
+                        env='production'//'sandbox'//
                         style={{
                             label: 'paypal',
                             size:  'medium',    // small | medium | large | responsive

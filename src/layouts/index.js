@@ -16,6 +16,7 @@ import EuroStyle from '../components/resources/EUROS3.ttf'
 import FontFaceObserver from 'fontfaceobserver'
 import { Provider } from 'react-redux'
 import store from '../redux/store'
+import BrowserDetection from 'react-browser-detection';
 
 const Wrapper = styled.div`
     min-height: 100%;
@@ -39,21 +40,43 @@ class TemplateWrapper extends React.Component{
         if(this.state.Loaded){
             return(
               <Provider store={store}>
-                <Wrapper>
-                    <Helmet
-                      title="Rusty-Universe"
-                      meta={[
-                        { name: 'description', content: 'Sample' },
-                        { name: 'keywords', content: 'sample, something' },
-                      ]}
-                    />
-                    <AwesomeBackground/>
-                    <Header data={this.props.data}/>
-                    {this.props.children()}
-                    <Footer />
-                    <WidgetBot/>
-                    <ScrollUpButton/>
-              </Wrapper>
+                <BrowserDetection>
+                  {{
+                    ie: () =>(
+                      <div>
+                        <Helmet
+                          title="Rusty-Universe"
+                          meta={[
+                            { name: 'description', content: 'Sample' },
+                            { name: 'keywords', content: 'sample, something' },
+                          ]}
+                        />
+                        <Header data={this.props.data}/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div style={{fontSize: 30, color: "white", width: "100%", textAlign: "center"}}>This site does not support Internet Explorer, Please upgrade your browser</div>
+                      </div>
+                    ),
+                    default: () =>(
+                      <Wrapper>
+                        <Helmet
+                          title="Rusty-Universe"
+                          meta={[
+                            { name: 'description', content: 'Sample' },
+                            { name: 'keywords', content: 'sample, something' },
+                          ]}
+                        />
+                        <AwesomeBackground/>
+                        <Header Menu VolumeControl data={this.props.data}/>
+                        {this.props.children()}
+                        <Footer />
+                        <WidgetBot/>
+                        <ScrollUpButton/>
+                      </Wrapper>
+                    ),
+                  }}
+                </BrowserDetection>
               </Provider>
             )
         }else{

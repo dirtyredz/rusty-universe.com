@@ -115,7 +115,7 @@ class Header extends React.Component {
         <StyledHeader style={(this.state.Loaded) ? Loaded : {}}>
           <RustyLogo/>
           <Title>RUSTY-UNIVERSE</Title>
-          <Menu
+          {this.props.Menu ? <Menu
             onStateChange={ this.isMenuOpen.bind(this) }
             isOpen={ this.state.MenuOpen } 
             styles={styles}
@@ -160,9 +160,8 @@ class Header extends React.Component {
                 )
               })
             : null}
-          </Menu>
-          {this.state.Volume === "down"}
-          <div onClick={this.MuteUnMute.bind(this)}><Volume/></div>
+          </Menu>:null}
+          {this.props.VolumeControl ? <div onClick={this.MuteUnMute.bind(this)}><Volume/></div>:null}
         </StyledHeader>
       )
     }

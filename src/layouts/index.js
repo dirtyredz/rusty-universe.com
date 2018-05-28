@@ -14,6 +14,8 @@ import Borg from '../components/resources/Borg.ttf'
 import Elixia from '../components/resources/ELIXIA.ttf'
 import EuroStyle from '../components/resources/EUROS3.ttf'
 import FontFaceObserver from 'fontfaceobserver'
+import { Provider } from 'react-redux'
+import store from '../redux/store'
 
 const Wrapper = styled.div`
     min-height: 100%;
@@ -36,7 +38,7 @@ class TemplateWrapper extends React.Component{
     render(){
         if(this.state.Loaded){
             return(
-
+              <Provider store={store}>
                 <Wrapper>
                     <Helmet
                       title="Rusty-Universe"
@@ -46,12 +48,13 @@ class TemplateWrapper extends React.Component{
                       ]}
                     />
                     <AwesomeBackground/>
-                    <Header />
+                    <Header data={this.props.data}/>
                     {this.props.children()}
                     <Footer />
                     <WidgetBot/>
                     <ScrollUpButton/>
               </Wrapper>
+              </Provider>
             )
         }else{
             return(
@@ -67,4 +70,18 @@ TemplateWrapper.propTypes = {
   children: PropTypes.func,
 }
 
+export const pageQuery = graphql`
+query sitePages {
+  allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/sitePages/"}}) {
+    edges {
+      node {
+        frontmatter{
+          title
+          path
+        }
+      }
+    }
+}
+  }
+`;
 export default TemplateWrapper

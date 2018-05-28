@@ -113,9 +113,9 @@ export default class CenterLinks extends React.Component {
   }
 
   render() {
-    const {markdownRemark: RustyPageExsists} = this.props.data
-    const {frontmatter, html } = RustyPageExsists
-
+    const {markdownRemark: MainPage} = this.props.data
+    const {frontmatter } = MainPage
+    console.log(this.props.data)
     return (
       <Parent>
         <Item
@@ -140,9 +140,9 @@ export default class CenterLinks extends React.Component {
           >
             <Link
               onClick={this.Animate.bind(this, this.One, this.Three)}
-              to="/Rusty"
+              to={frontmatter.path}
             >
-              <span>RUSTY</span>
+              <span>{frontmatter.title.toUpperCase()}</span>
             </Link>
           </Item>
         ) : null}

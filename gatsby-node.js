@@ -14,10 +14,9 @@ exports.createPages = ({boundActionCreators, graphql}) => {
   const sitePageTemplate = path.resolve (`src/layouts/sitePages.js`);
 
   return graphql (
-    `{allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/sitePages/"}, frontmatter: {title: {ne: "Rusty"} }}) {
+    `{allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/sitePages/"}}) {
       edges {
         node {
-          html
           frontmatter{
             title
             path

@@ -4,6 +4,75 @@ import styled, { keyframes } from 'styled-components';
 import PaypalForm from './PaypalForm'
 import ReactDOM from 'react-dom';
 import ButtonHover from './resources/ButtonHover.mp3'
+import { connect } from "react-redux";
+
+function mapStateToProps(state) {
+  return {
+    volume: state.volume
+  };
+}
+
+class PaymentButton extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={PopUp: false,Message: false}
+    }
+    TogglePaypal(e){
+        this.setState({PopUp: !this.state.PopUp})
+    }
+    GlitchText(){
+        let Button = ReactDOM.findDOMNode(this.button)
+        let num_characters = Button.children.length;
+        let random_char_num = Math.floor(Math.random() * num_characters);
+        Button.children[random_char_num].className += 'FX '
+    }
+    onEnter(){
+        let Button = ReactDOM.findDOMNode(this.button)
+        if(!this.props.volume.Muted){
+          let Audio = ReactDOM.findDOMNode(this.audio)
+          Audio.play()
+        }
+        for (let i=0; i < Button.children.length; i++) {
+            setTimeout(this.GlitchText.bind(this), 125 * i);
+        }
+    }
+    onLeave(){
+        let v = ReactDOM.findDOMNode(this.audio)
+        let Button = ReactDOM.findDOMNode(this.button)
+        Button
+        let arr = Array.prototype.slice.call( Button.children )
+        arr.map((child)=>{
+            child.classList.remove("FX");
+        })
+    }
+    render(){
+        return (
+            <ButtonContainer
+                onMouseEnter={this.onEnter.bind(this)}
+                onMouseLeave={this.onLeave.bind(this)}>
+                {this.state.PopUp ? <PaypalForm {...this.props} TogglePaypal={this.TogglePaypal.bind(this)}/>:''}
+                <Button
+                    ref={(node)=>this.button = node}
+                    onClick={this.TogglePaypal.bind(this)}
+                    {...this.props}>
+                    {this.props.children.map((child)=>{
+                        if (typeof(child) === 'string'){
+                            let charecter = child.split('')
+                            return charecter.map((char)=><span>{char}</span>)
+                        }else{
+                            return child
+                        }
+                    })}
+                </Button>
+                {this.props.volume.Muted ? null : <audio ref={(node)=>this.audio = node}>
+                    <source src={ButtonHover}/>
+                </audio>}
+            </ButtonContainer>
+        );
+    }
+}
+
+export default connect(mapStateToProps)(PaymentButton)
 
 const FX = keyframes`
   0% {
@@ -47,61 +116,3 @@ const ButtonContainer = styled.div`
         animation: ${FX} .3s linear alternate;
     }
 `;
-
-export default class PaymentButton extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={PopUp: false,Message: false}
-    }
-    TogglePaypal(e){
-        this.setState({PopUp: !this.state.PopUp})
-    }
-    GlitchText(){
-        let Button = ReactDOM.findDOMNode(this.button)
-        let num_characters = Button.children.length;
-        let random_char_num = Math.floor(Math.random() * num_characters);
-        Button.children[random_char_num].className += 'FX '
-    }
-    onEnter(){
-        let Button = ReactDOM.findDOMNode(this.button)
-        let Audio = ReactDOM.findDOMNode(this.audio)
-        Audio.play()
-        for (let i=0; i < Button.children.length; i++) {
-            setTimeout(this.GlitchText.bind(this), 125 * i);
-        }
-    }
-    onLeave(){
-        let v = ReactDOM.findDOMNode(this.audio)
-        let Button = ReactDOM.findDOMNode(this.button)
-        Button
-        let arr = Array.prototype.slice.call( Button.children )
-        arr.map((child)=>{
-            child.classList.remove("FX");
-        })
-    }
-    render(){
-        return (
-            <ButtonContainer
-                onMouseEnter={this.onEnter.bind(this)}
-                onMouseLeave={this.onLeave.bind(this)}>
-                {this.state.PopUp ? <PaypalForm {...this.props} TogglePaypal={this.TogglePaypal.bind(this)}/>:''}
-                <Button
-                    ref={(node)=>this.button = node}
-                    onClick={this.TogglePaypal.bind(this)}
-                    {...this.props}>
-                    {this.props.children.map((child)=>{
-                        if (typeof(child) === 'string'){
-                            let charecter = child.split('')
-                            return charecter.map((char)=><span>{char}</span>)
-                        }else{
-                            return child
-                        }
-                    })}
-                </Button>
-                <audio ref={(node)=>this.audio = node}>
-                    <source src={ButtonHover}/>
-                </audio>
-            </ButtonContainer>
-        );
-    }
-}

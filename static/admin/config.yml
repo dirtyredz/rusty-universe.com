@@ -51,5 +51,5 @@ collections:
     fields:
       - { name: title, label: Title, widget: "string"}
       - { name: description, label: Description, widget: "string"}
-      - { name: markdown, label: "markdown content",, widget: "markdown"}
+      - { name: markdown, label: "Markdown", widget: "markdown"}
       - { name: main, label: Main, widget: "boolean", default: false}

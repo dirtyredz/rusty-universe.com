@@ -16,13 +16,11 @@ const Home = ({ data, transition, props }) =>(
 )
 
 export const pageQuery = graphql`
-  query RustyPageExsists {
-    markdownRemark(frontmatter: {title: {eq: "Rusty"} }) {
-      html
+  query MainPage {
+    markdownRemark(frontmatter: {main: {eq: true} }) {
       frontmatter {
         title
-        description
-        markdown
+        path
       }
     }
   }

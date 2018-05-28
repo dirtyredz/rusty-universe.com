@@ -14,6 +14,7 @@ import Borg from '../components/resources/Borg.ttf'
 import Elixia from '../components/resources/ELIXIA.ttf'
 import EuroStyle from '../components/resources/EUROS3.ttf'
 import FontFaceObserver from 'fontfaceobserver'
+import RustyAnnouncments from '../components/RustyAnnouncments'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -24,19 +25,26 @@ const Wrapper = styled.div`
 `;
 
 const sitePageTemplate = ({ data, transition, props }) =>{
-  const {markdownRemark: sitePage} = data
-  const {frontmatter, html } = sitePage
+  const { markdownRemark: sitePage } = data
+  const { frontmatter } = sitePage
   return(
     <Wrapper style={transition && transition.style}>
-      <div dangerouslySetInnerHTML={{__html: frontmatter.markdown}}/>
+      <div 
+        style={{
+          width: "100%",
+          color: "white",
+          marginLeft: "10%",
+          marginRight: "10%"
+        }} 
+        dangerouslySetInnerHTML={{__html: frontmatter.markdown}}
+      />
     </Wrapper>
   )
 }
 
 export const pageQuery = graphql`
 query sitePage($path: String) {
-    markdownRemark(frontmatter: {title: {ne: "Rusty"}, path: { eq: $path } }) {
-      html
+    markdownRemark(frontmatter: {path: { eq: $path } }) {
       frontmatter {
         title
         description

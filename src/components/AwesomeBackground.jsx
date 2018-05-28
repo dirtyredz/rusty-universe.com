@@ -7,56 +7,16 @@ import dots from './resources/dots.png'
 import dots2 from './resources/dots2.png'
 import galaxy from './resources/galaxy.jpg'
 import BackgroundMusic from './resources/Background_Rusty.mp3'
+import { connect } from "react-redux";
 
-const StackedCanvas = styled.canvas`
-    position: absolute;
-`;
-const Wrapper = styled.div`
-    overflow: hidden;
-    height: 100%;
-    width: 100vw;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    & #BackLayer{
-        background: url("${dots2}");
-        background-repeat: repeat;
-        opacity: 0;
-    }
-    & #FrontLayer{
-        background: url("${dots}");
-        background-repeat: repeat;
-        background-position-y: 5%;
-        opacity: 0;
-    }
-`;
-const Galaxy = styled.div`
-    overflow: hidden;
-    height: 100%;
-    width: 100vw;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    content: "";
-    background: url("${galaxy}");
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-`;
+function mapStateToProps(state) {
+  return {
+    volume: state.volume
+  };
+}
 
-export default class AwesomeBackground extends React.Component {
+class AwesomeBackground extends React.Component {
     componentDidMount(){
-        const Audio = ReactDOM.findDOMNode(this.Audio)
-        Audio.volume = 0.1;
-
         let MiddleLayer, MiddleCTX, BackLayer, BackCTX, FrontLayer, FrontCTX;
 
         BackLayer = ReactDOM.findDOMNode(this.BackLayer)
@@ -137,12 +97,19 @@ export default class AwesomeBackground extends React.Component {
         },1);
         //window.addEventListener("resize", startOver);
     }
+    handleVolume(Node){
+      this.Audio = Node
+      if(!this.props.volume.Muted){
+        const Audio = ReactDOM.findDOMNode(this.Audio)
+        Audio.volume = 0.1;
+      }
+    }
     render() {
         return(
             <Wrapper>
-                <audio ref={(Node)=>this.Audio = Node} autoPlay loop>
+                {this.props.volume.Muted ? null : <audio ref={this.handleVolume.bind(this)} autoPlay loop>
                     <source src={BackgroundMusic}/>
-                </audio>
+                </audio>}
                 <Galaxy ref={(a)=>{this.GalaxyBG = a}}/>
                 <MouseParallax>
                     <StackedCanvas ref={(a)=>{this.BackLayer = a}} id="BackLayer"></StackedCanvas>
@@ -153,3 +120,49 @@ export default class AwesomeBackground extends React.Component {
         )
     }
 }
+
+export default connect(mapStateToProps)(AwesomeBackground)
+
+const StackedCanvas = styled.canvas`
+    position: absolute;
+`;
+const Wrapper = styled.div`
+    overflow: hidden;
+    height: 100%;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    & #BackLayer{
+        background: url("${dots2}");
+        background-repeat: repeat;
+        opacity: 0;
+    }
+    & #FrontLayer{
+        background: url("${dots}");
+        background-repeat: repeat;
+        background-position-y: 5%;
+        opacity: 0;
+    }
+`;
+const Galaxy = styled.div`
+    overflow: hidden;
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    content: "";
+    background: url("${galaxy}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+`;

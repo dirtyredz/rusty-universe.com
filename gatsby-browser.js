@@ -3,8 +3,9 @@
 import React, { createElement } from "react"
 import { Transition } from "react-transition-group"
 import createHistory from "history/createBrowserHistory"
-
+import { Provider } from 'react-redux'
 import getTransitionStyle from "./src/utils/getTransitionStyle"
+import store from './src/redux/store'
 
 const timeout = 1500
 const historyExitingEventType = `history::exiting`
@@ -61,20 +62,22 @@ class ReplaceComponentRenderer extends React.Component {
       key: this.props.location.key,
     }
     return (
-      <Transition {...transitionProps}>
-      {
-        (status) => createElement(this.props.pageResources.component, {
-          ...this.props,
-          ...this.props.pageResources.json,
-          transition: {
-            status,
-            timeout,
-            style: getTransitionStyle({ status, timeout }),
-            nextPageResources: this.state.nextPageResources,
-          },
-        })
-      }
-      </Transition>
+      <Provider store={store}>
+        <Transition {...transitionProps}>
+        {
+          (status) => createElement(this.props.pageResources.component, {
+            ...this.props,
+            ...this.props.pageResources.json,
+            transition: {
+              status,
+              timeout,
+              style: getTransitionStyle({ status, timeout }),
+              nextPageResources: this.state.nextPageResources,
+            },
+          })
+        }
+        </Transition>
+      </Provider>
     )
   }
 }

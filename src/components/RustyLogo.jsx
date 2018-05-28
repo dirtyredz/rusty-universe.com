@@ -20,7 +20,7 @@ const StyledSVG = styled.svg`
   fill: white;
   transition: fill 1s linear;
   &:hover{
-      fill: red;
+      fill: grey;
   }
 `;
 

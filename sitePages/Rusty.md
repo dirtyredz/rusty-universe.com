@@ -1,7 +1,7 @@
 ---
 title: Rusty
-path: '/Rusty'
 description: Rusty Main Page.
-markdown: 'Rusty'
+markdown: _**Welcome to Rusty's**_
 main: true
 ---
+

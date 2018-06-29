@@ -5,18 +5,13 @@ import ScrollUpButton from 'react-scroll-up-button'
 import AwesomeBackground from '../components/AwesomeBackground'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import './index.css'
 import WidgetBot from '../components/WidgetBot'
 import galaxy from '../components/resources/galaxy.jpg'
-import TallLean from '../components/resources/Tall & Lean.ttf'
-import Borg from '../components/resources/Borg.ttf'
-import Elixia from '../components/resources/ELIXIA.ttf'
-import EuroStyle from '../components/resources/EUROS3.ttf'
-import FontFaceObserver from 'fontfaceobserver'
 import { Provider } from 'react-redux'
 import store from '../redux/store'
-import BrowserDetection from 'react-browser-detection';
+import BrowserDetection from '../components/BrowserDetection';
 
 const Wrapper = styled.div`
     min-height: 100%;
@@ -29,12 +24,6 @@ class TemplateWrapper extends React.Component{
     constructor(props){
         super(props)
         this.state={Loaded: true}
-    }
-    onLoaded(){
-        //this.setState({Loaded: true})
-    }
-    componentDidMount(){
-
     }
     render(){
         if(this.state.Loaded){

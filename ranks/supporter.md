@@ -8,7 +8,7 @@ rankRewards:
   - amount: '2'
     reward: ExtraBuoyCores
   - amount: '1'
-    reward: RegnerativeSector
+    reward: RegenerativeSector
   - amount: '1'
     reward: WebInterface
   - amount: '1'

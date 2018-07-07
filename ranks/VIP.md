@@ -1,6 +1,8 @@
 ---
 title: VIP
-description: 'Not that everybody else isn’t important, your support however is! With your contribution, you will allow the community to keep growing.'
+description: >-
+  Not that everybody else isn’t important, your support however is! With your
+  contribution, you will allow the community to keep growing.
 amount: '25'
 rankRewards:
   - amount: '75'
@@ -8,7 +10,7 @@ rankRewards:
   - amount: '6'
     reward: ExtraBuoyCores
   - amount: '1'
-    reward: RegnerativeSector
+    reward: RegenerativeSector
   - amount: '3'
     reward: WebInterface
   - amount: '1'
